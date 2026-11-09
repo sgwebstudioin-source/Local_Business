@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chennailocal",
+  "main": ".open-next/worker.js",
+
+  // Must be >= 2024-09-23 for OpenNext. nodejs_compat is required because
+  // lib/admin-auth.ts uses node:crypto (createHash, timingSafeEqual) and Buffer.
+  "compatibility_date": "2026-11-09",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+
+  // Public (non-secret) values can go here instead of the dashboard:
+  // "vars": { "NEXT_PUBLIC_SUPABASE_URL": "https://YOUR_PROJECT.supabase.co" }
+  //
+  // Never put SUPABASE_SERVICE_ROLE_KEY or ADMIN_PASSWORD here — this file is
+  // committed to git. Use `wrangler secret put` (see README) for those.
+}
